@@ -3,12 +3,18 @@
 <head>
 	<title>{{ title }} - Page</title>
 </head>
+<style>
+		body { color:white; }
+	</style>
 <body>
-	<div class="navbar">
+	<header class = "intro-header" style="background-image:
+	url('static/background.jpg'); height: 500px;
+	background-repeat: no-repeat; background-size:
+	contain;">
+ 	<div class="navbar">
 		{% if current_user.is_authenticated %}
 			<a href="{{ url_for('home') }}">Home</a>
 			<a href="{{ url_for('about') }}">About</a>
-			<a href="{{ url_for('post') }}">Post</a>
 			<a href="{{ url_for('account') }}">Account</a>
 			<a href="{{ url_for('logout') }}">Logout</a>
 		{% else %}

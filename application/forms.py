@@ -3,18 +3,6 @@ from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users
 from flask_login import current_user
-class PostForm(FlaskForm):
-	title = StringField('Title',
-		validators=[
-			DataRequired(),
-			Length(min=4, max=100)
-		])
-	content = StringField('Content',
-		validators=[
-			DataRequired(),
-			Length(min=50, max=10000)
-		])
-	submit = SubmitField('Post Content')
 
 class RegistrationForm(FlaskForm):
 	first_name = StringField('First Name',
