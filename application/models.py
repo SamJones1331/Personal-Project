@@ -56,4 +56,10 @@ class Game_Characters(db.Model):
 	x_men = db.Column(db.Boolean, nullable=False)
 
 	def __repr__(self):
-		return ("Character: ", self.character)
+		return ''.join(["Character: ", self.character, ' ', "ANX: ", self.all_new_xmen, ' ', "AOS: ", self.agents_of_shield, ' ', "AF: ", self.agile_fighters, ' ', "AH: ", self.anti_heroes, ' ', "AV: ", self.avengers, 
+			' ', "BIB: ", self.back_in_black, ' ', "BB: ", self.big_brains, ' ', "TC: ", self.the_crew, ' ', "CE: ", self.cutting_edge, ' ', "DF: ", self.defenders, 
+			' ', "FV: ", self.family_values, ' ', "FF: ", self.femme_fatales, ' ', "FON: ", self.forces_of_nature, ' ', "GEN: ", self.generations, ' ', "GAD: ", self.gods_and_demons, 
+			' ', "GRD: ", self.guardians, ' ', "HH: ", self.heavy_hitters, ' ', "HM: ", self.heavy_metal, ' ', "MA: ", self.martial_artists, ' ', "MR: ", self.marvel_royalty, 
+			' ', "MS: ", self.midnight_sons, ' ', "NA: ", self.new_avengers, ' ', "OA: ", self.original_avengers, ' ', "PRT: ", self.partners, ' ', "SHRP: ", self.sharpshooters, 
+			' ', "TL: ", self.team_leaders, ' ', "UA3: ", self.ultimate_alliance_3, ' ', "VL: ", self.villains, ' ', "WW: ", self.web_warriors, ' ', "WC: ", self.wise_cracking, 
+			' ', "WOM: ", self.women_of_marvel, ' ', "XF: ", self.x_force, ' ', "XM: ", self.x_men])

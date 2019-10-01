@@ -36,7 +36,7 @@ def register():
 		return redirect(url_for('home'))
 	form = RegistrationForm()
 	if form.validate_on_submit():
-		hashed_pw = bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
+		hashed_pw = bcrypt.generate_password_hash(form.password.data)
 		user = Users(
 			first_name=form.first_name.data,
 			last_name=form.last_name.data,
@@ -44,7 +44,7 @@ def register():
 			password=hashed_pw)
 		db.session.add(user)
 		db.session.commit()
-		return redirect(url_for('post'))
+		return redirect(url_for('account'))
 	return render_template('register.html', title='Register', form=form)
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
@@ -61,3 +61,4 @@ def account():
 		form.last_name.data = current_user.last_name
 		form.email.data = current_user.email
 	return render_template('account.html', title='Account', form=form)
+	#		hashed_pw = bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
