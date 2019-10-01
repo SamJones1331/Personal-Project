@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<h1>Team Page</h1>
+	<p>Choose your team!</p>
+	<div class="form">
+		<form method="POST" action=="">
+			{{ form.hidden_tag() }}
+			
+			{{ form.character1.label }}
+			{% if form.character1.errors %}
+			{{ form.character1 }}
+			<div class="error">
+				{% for error in form.character1.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% else %}
+				{{ form.title }}
+			{% endif %}
+			
+			<br>
+			
+			{{ form.submit }}
+
+		</form>
+	</div>
+{% endblock body_content %}

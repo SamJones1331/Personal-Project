@@ -1,7 +1,7 @@
 from flask import render_template , redirect, url_for, request
 from application import app, db, bcrypt
 from application.models import Users
-from application.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, TeamForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route('/')
@@ -62,3 +62,20 @@ def account():
 		form.email.data = current_user.email
 	return render_template('account.html', title='Account', form=form)
 	#		hashed_pw = bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
+@app.route('/team', methods=['GET', 'POST'])
+@login_required
+def team():
+	form = TeamForm()
+	if form.validate_on_submit():
+		teamData = Team(
+						character1=form.character1.data,
+						character2=form.character2.data,
+						character3=form.character3.data,
+						character4=form.character4.data
+			)
+		db.session.add(teamData)
+		db.session.commit()
+		return redirect(url_for('home'))
+	else:
+		print(form.errors)
+	return render_template ('team.html', title='Team', form=form)

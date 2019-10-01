@@ -63,3 +63,13 @@ class Game_Characters(db.Model):
 			' ', "MS: ", self.midnight_sons, ' ', "NA: ", self.new_avengers, ' ', "OA: ", self.original_avengers, ' ', "PRT: ", self.partners, ' ', "SHRP: ", self.sharpshooters, 
 			' ', "TL: ", self.team_leaders, ' ', "UA3: ", self.ultimate_alliance_3, ' ', "VL: ", self.villains, ' ', "WW: ", self.web_warriors, ' ', "WC: ", self.wise_cracking, 
 			' ', "WOM: ", self.women_of_marvel, ' ', "XF: ", self.x_force, ' ', "XM: ", self.x_men])
+
+class Team(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	character1 = db.Column(db.String(150), nullable=False)
+	character2 = db.Column(db.String(150), nullable=False)
+	character3 = db.Column(db.String(150), nullable=False)
+	character4 = db.Column(db.String(150), nullable=False)
+
+	def __repr__(self):
+		return ''.join(["Character 1: ", self.character1, "\r\n", "Character 2: ", self.character2, "\r\n", "Character 3: ", self.character3, "\r\n", "Character 4: ", self.character4])
