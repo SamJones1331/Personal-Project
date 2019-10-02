@@ -74,23 +74,24 @@ class UpdateAccountForm(FlaskForm):
 				raise ValidationError('Email already in use - Please choose another')
 
 class TeamForm(FlaskForm):
-	character1 = SelectField('Character 1',
-		choices=[
-			('Spider-man', 1)
+	character1 = StringField('Character 1',
+		validators=[
+			DataRequired(),
+			Length(min=3, max=30)
 		])
-	#character2 = StringField('Character 2',
-		#validators=[
-			#DataRequired(),
-			#Length(min=3, max=30)
-		#])
-	#character3 = StringField('Character 3',
-		#validators=[
-			#DataRequired(),
-			#Length(min=3, max=30)
-		#])
-	#character4 = StringField('Character 4',
-		#validators=[
-			#DataRequired(),
-			#Length(min=3, max=30)
-		#])
+	character2 = StringField('Character 2',
+		validators=[
+			DataRequired(),
+			Length(min=3, max=30)
+		])
+	character3 = StringField('Character 3',
+		validators=[
+			DataRequired(),
+			Length(min=3, max=30)
+		])
+	character4 = StringField('Character 4',
+		validators=[
+			DataRequired(),
+			Length(min=3, max=30)
+		])
 	submit = SubmitField('Create Team')

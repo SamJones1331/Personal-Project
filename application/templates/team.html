@@ -19,6 +19,19 @@
 			{% endif %}
 			
 			<br>
+			{{ form.character2.label }}
+			{% if form.character2.errors %}
+			{{ form.character2 }}
+			<div class="error">
+				{% for error in form.character2.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% else %}
+				{{ form.title }}
+			{% endif %}
+
+			<br>
 			
 			{{ form.submit }}
 
