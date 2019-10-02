@@ -1,4 +1,4 @@
-from application.models import gamecharacters
+from application.models import Gamecharacters
 from application import db
 
 with open("character_attributes.txt", "r") as file:
@@ -10,7 +10,7 @@ for i in lines:
 
 for line in range(37):
 	print(data[line][34])
-	characters = gamecharacters(id=data[line][0], character=data[line][1], all_new_xmen=data[line][2], agents_of_shield=data[line][3]
+	characters = Gamecharacters(id=data[line][0], character_name=data[line][1], all_new_xmen=data[line][2], agents_of_shield=data[line][3]
 		, agile_fighters=data[line][4], anti_heroes=data[line][5], avengers=data[line][6], back_in_black=data[line][7]
 		, big_brains=data[line][8], the_crew=data[line][9], cutting_edge=data[line][10], defenders=data[line][11]
 		, family_values=data[line][12], femme_fatales=data[line][13], forces_of_nature=data[line][14], generations=data[line][15]

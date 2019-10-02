@@ -1,8 +1,10 @@
 from flask_wtf import FlaskForm
+from application import db
 from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application.models import Users
-from flask_login import current_user
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, InputRequired
+from application.models import Users, Gamecharacters
+from flask_login import current_user, LoginManager
+from wtforms_sqlalchemy.fields import QuerySelectField
 
 class RegistrationForm(FlaskForm):
 	first_name = StringField('First Name',
@@ -74,11 +76,9 @@ class UpdateAccountForm(FlaskForm):
 				raise ValidationError('Email already in use - Please choose another')
 
 class TeamForm(FlaskForm):
-	character1 = StringField('Character 1',
-		validators=[
-			DataRequired(),
-			Length(min=3, max=30)
-		])
+	character1 = SelectField("Character 1",
+		choices=[Gamecharacters.query.get(Gamecharacters.character_name)]
+		)
 	character2 = StringField('Character 2',
 		validators=[
 			DataRequired(),
