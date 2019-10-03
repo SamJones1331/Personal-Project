@@ -1,6 +1,6 @@
 from flask import render_template , redirect, url_for, request
 from application import app, db, bcrypt
-from application.models import Users, Gamecharacters
+from application.models import Users, Gamecharacters,Team
 from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, TeamForm
 from flask_login import login_user, current_user, logout_user, login_required, LoginManager
 
@@ -66,16 +66,16 @@ def account():
 @login_required
 def team():
 	form = TeamForm()
-	# if form.validate_on_submit():
-	# 	teamData = Team(
-	# 					character1=form.character1.data,
-	# 					character2=form.character2.data,
-	# 					character3=form.character3.data,
-	# 					character4=form.character4.data
-	# 		)
-	# 	db.session.add(teamData)
-	# 	db.session.commit()
-	# 	return redirect(url_for('home'))
-	# else:
-	# 	print(form.errors)
+	if form.submit.data:
+		teamData = Team(
+						character1=form.character1.data,
+						character2=form.character2.data,
+						character3=form.character3.data,
+						character4=form.character4.data
+			)
+		db.session.add(teamData)
+		db.session.commit()
+		return redirect(url_for('home'))
+	else:
+		print(form.errors)
 	return render_template ('team.html', title='Team', form=form)
