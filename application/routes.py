@@ -79,3 +79,7 @@ def team():
 	else:
 		print(form.errors)
 	return render_template ('team.html', title='Team', form=form)
+@app.route('/userteam', methods=["GET", "POST"])
+@login_required
+def userteam():
+	return render_template ('userteam.html', title='UserTeam')
