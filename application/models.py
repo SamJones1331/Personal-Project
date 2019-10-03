@@ -56,8 +56,8 @@ class Gamecharacters(db.Model):
 	x_men = db.Column(db.String(30), nullable=False)
 
 	def __repr__(self):
-		return "f{self.charcter}"
-		# ''.join(["Character: ", self.character, ' ', "ANX: ", self.all_new_xmen, ' ', "AOS: ", self.agents_of_shield, ' ', "AF: ", self.agile_fighters, ' ', "AH: ", self.anti_heroes, ' ', "AV: ", self.avengers, 
+		return  self.character_name
+		# ''.join(["Character: ", self.character_name, ' ', "ANX: ", self.all_new_xmen, ' ', "AOS: ", self.agents_of_shield, ' ', "AF: ", self.agile_fighters, ' ', "AH: ", self.anti_heroes, ' ', "AV: ", self.avengers, 
 		# 	' ', "BIB: ", self.back_in_black, ' ', "BB: ", self.big_brains, ' ', "TC: ", self.the_crew, ' ', "CE: ", self.cutting_edge, ' ', "DF: ", self.defenders, 
 		# 	' ', "FV: ", self.family_values, ' ', "FF: ", self.femme_fatales, ' ', "FON: ", self.forces_of_nature, ' ', "GEN: ", self.generations, ' ', "GAD: ", self.gods_and_demons, 
 		# 	' ', "GRD: ", self.guardians, ' ', "HH: ", self.heavy_hitters, ' ', "HM: ", self.heavy_metal, ' ', "MA: ", self.martial_artists, ' ', "MR: ", self.marvel_royalty, 
