@@ -1,7 +1,7 @@
-from flask import render_template , redirect, url_for, request
+from flask import render_template , redirect, url_for, request, flash
 from application import app, db, bcrypt
 from application.models import Users, Gamecharacters,Team
-from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, TeamForm
+from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, TeamForm, UpdateTeamForm
 from flask_login import login_user, current_user, logout_user, login_required, LoginManager
 
 @app.route('/')
@@ -75,11 +75,28 @@ def team():
 			)
 		db.session.add(teamData)
 		db.session.commit()
-		return redirect(url_for('home'))
+		return redirect(url_for('userteam'))
 	else:
 		print(form.errors)
 	return render_template ('team.html', title='Team', form=form)
 @app.route('/userteam', methods=["GET", "POST"])
 @login_required
 def userteam():
-	return render_template ('userteam.html', title='UserTeam')
+	teamData = Team.query.all()
+	return render_template ('userteam.html', title="Your Team", team=teamData)
+# @app.route('/updateteam', methods=["GET", "POST"])
+# @login_required
+# def updateteam():
+# 	form = UpdateTeamForm()
+# 		if form.submit.data:
+# 			teamData = Team(
+# 							character1=form.character1.data,
+# 							character2=form.character2.data,
+# 							character3=form.character3.data,
+# 							character4=form.character4.data
+# 				)
+# 			db.session.commit()
+# 			return redirect(url_for('team'))
+# 		else:
+# 			print(form.errors)
+# 		return render_template ('userteam.html', title='UserTeam')

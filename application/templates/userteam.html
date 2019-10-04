@@ -1,29 +1,13 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1> Team Page for {{ current_user.first_name }} {{ current_user.last_name }}</h1>
-	<body>
+	<h1>Team for {{ current_user.first_name }} {{ current_user.last_name }}</h1>
+	<h2>Here is your team!</h2>
+	{% for i in team %}	
 		<div>
-			Character 1
+			<h4>Character 1: {{ i.character1 }}</h4>
+			<h4>Character 2: {{ i.character2 }}</h4>
+			<h4>Character 3: {{ i.character3 }}</h4>	
+			<h4>Character 4: {{ i.character4 }}</h4>
 		</div>
-		<br>
-		<div>
-			Character 2
-		</div>
-		<br>
-		<div>
-			Character 3
-		</div>
-		<br>
-		<div>
-			Character 4
-		</div>
-		<br>
-		<div>
-			Bonuses from Current Setup
-		</div>
-		<br>
-		<div>
-			Strength Durability Resistance Mastery Vitality Energy
-		</div>
-	</body>
+	{% endfor %}
 {% endblock body_content %}

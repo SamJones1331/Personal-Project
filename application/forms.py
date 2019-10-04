@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from application import db
-from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, InputRequired
-from application.models import Users, Gamecharacters
+from application.models import Users, Gamecharacters, Team
 from flask_login import current_user, LoginManager
 from wtforms_sqlalchemy.fields import QuerySelectField
 
@@ -78,7 +78,6 @@ class UpdateAccountForm(FlaskForm):
 class TeamForm(FlaskForm):
 	lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
 	names = []
-	print(lists)
 	for i in range(int(len(lists))):
 		temp = [lists[i], lists[i]]
 		names.append(temp)
@@ -96,3 +95,24 @@ class TeamForm(FlaskForm):
 		choices= names
 		)
 	submit = SubmitField('Create Team')
+
+class UpdateTeamForm(FlaskForm):
+	lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
+	names = []
+	for i in range(int(len(lists))):
+		temp = [lists[i], lists[i]]
+		names.append(temp)
+
+	character1 = SelectField("Character 1",
+		choices= names
+		)
+	character2 = SelectField("Character 2",
+		choices= names
+		)
+	character3 = SelectField("Character 3",
+		choices= names
+		)
+	character4 = SelectField("Character 4",
+		choices= names
+		)
+	submit = SubmitField('Update Team')
