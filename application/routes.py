@@ -71,7 +71,8 @@ def team():
 						character1=form.character1.data,
 						character2=form.character2.data,
 						character3=form.character3.data,
-						character4=form.character4.data
+						character4=form.character4.data,
+						author=current_user
 			)
 		db.session.add(teamData)
 		db.session.commit()
