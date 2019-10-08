@@ -14,7 +14,6 @@ class Users(db.Model, UserMixin):
 	last_name = db.Column(db.String(30), nullable=False)
 	team = db.relationship('Team', backref='author', lazy=True)
 
-
 	def __repr__(self):
 		return ''.join(['User ID: ', str(self.id), '\r\n', 'Email: ', self.email, '\r\n',
 			'Name: ', self.first_name, ' ', self.last_name])
@@ -64,8 +63,7 @@ class Gamecharacters(db.Model):
 			' ', "MS: ", self.midnight_sons, ' ', "NA: ", self.new_avengers, ' ', "OA: ", self.original_avengers, ' ', "PRT: ", self.partners, ' ', "SHRP: ", self.sharpshooters, 
 			' ', "TL: ", self.team_leaders, ' ', "UA3: ", self.ultimate_alliance_3, ' ', "VL: ", self.villains, ' ', "WW: ", self.web_warriors, ' ', "WC: ", self.wise_cracking, 
 			' ', "WOM: ", self.women_of_marvel, ' ', "XF: ", self.x_force, ' ', "XM: ", self.x_men])
-	def Gamecharacters_query():
-		return Gamecharacters.query	
+
 
 
 

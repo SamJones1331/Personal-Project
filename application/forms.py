@@ -77,6 +77,7 @@ class UpdateAccountForm(FlaskForm):
 
 class TeamForm(FlaskForm):
 	lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
+#	lists = []
 	names = []
 	for i in range(int(len(lists))):
 		temp = [lists[i], lists[i]]
@@ -98,6 +99,7 @@ class TeamForm(FlaskForm):
 
 class UpdateTeamForm(FlaskForm):
 	lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
+#	lists = []
 	names = []
 	for i in range(int(len(lists))):
 		temp = [lists[i], lists[i]]
