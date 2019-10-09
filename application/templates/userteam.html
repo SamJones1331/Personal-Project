@@ -1,13 +1,69 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1>Team for {{ current_user.first_name }} {{ current_user.last_name }}</h1>
-	<h2>Here is your team!</h2>
-	{% for i in team %}	
-		<div>
-			<h4>Character 1: {{ i.character1 }}</h4>
-			<h4>Character 2: {{ i.character2 }}</h4>
-			<h4>Character 3: {{ i.character3 }}</h4>	
-			<h4>Character 4: {{ i.character4 }}</h4>
-		</div>
-	{% endfor %}
+	<h1>Choose Team Page</h1>
+	<p>Choose your team!</p>
+	<div class="form">
+		<form method="POST" action="">
+			{{ form.hidden_tag() }}
+			<div class="form-group">
+				{{ form.character1.label }}
+				{% if form.character1.errors %}
+					{{ form.character1 }}
+					<div class="error">
+						{% for error in form.character1.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.character1 }}
+				{% endif %}
+			</div>	
+			<br>
+			<div class="form-group">
+				{{ form.character2.label }}
+				{% if form.character2.errors %}
+					{{ form.character2 }}
+					<div class="error">
+						{% for error in form.character2.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.character2 }}
+				{% endif %}
+			</div>
+			<br>
+			<div class="form-group">
+				{{ form.character3.label }}
+				{% if form.character3.errors %}
+					{{ form.character3 }}
+					<div class="error">
+						{% for error in form.character3.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.character3 }}
+				{% endif %}
+			</div>
+			<br>
+			<div class="form-group">
+				{{ form.character4.label }}
+				{% if form.character4.errors %}
+					{{ form.character4 }}
+					<div class="error">
+						{% for error in form.character4.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.character4 }}
+				{% endif %}
+			</div>
+			<br>
+			<div class="form-group">	
+				{{ form.submit }}
+			</div>
+		</form>
+	</div>
 {% endblock body_content %}

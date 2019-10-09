@@ -1,6 +1,6 @@
 from flask import render_template , redirect, url_for, request, flash
 from application import app, db, bcrypt
-from application.models import Users, Gamecharacters,Team
+from application.models import Users, Gamecharacters, Team
 from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, TeamForm, UpdateTeamForm
 from flask_login import login_user, current_user, logout_user, login_required, LoginManager
 
@@ -80,11 +80,12 @@ def team():
 	else:
 		print(form.errors)
 	return render_template ('team.html', title='Team', form=form)
-@app.route('/userteam', methods=["GET", "POST"])
+@app.route('/userteam/<int(min=1, max=100):user_id>')
 @login_required
-def userteam():
-	teamData = Team.query.all()
+def userteam(user_id):
+	
 	return render_template ('userteam.html', title="Your Team", team=teamData)
+
 # @app.route('/updateteam', methods=["GET", "POST"])
 # @login_required
 # def updateteam():
