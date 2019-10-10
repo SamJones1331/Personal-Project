@@ -80,11 +80,13 @@ def team():
 	else:
 		print(form.errors)
 	return render_template ('team.html', title='Team', form=form)
-@app.route('/userteam/<int(min=1, max=100):user_id>')
+@app.route('/userteam')
 @login_required
-def userteam(user_id):
+def userteam():
+	term = Team.query.filter_by(user_id=current_user.id).all()
 	
-	return render_template ('userteam.html', title="Your Team", team=teamData)
+
+	return render_template ('userteam.html', title="Your Team", teams=term)
 
 # @app.route('/updateteam', methods=["GET", "POST"])
 # @login_required
