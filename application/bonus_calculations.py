@@ -13,3 +13,20 @@ energy_bonus = 0
 def OverallTeamBonus ():
 	pass
 
+def StrengthBonus():
+	pass
+
+def DurabilityBonus():
+	pass
+
+def ResistanceBonus():
+	pass
+
+def MasteryBonus():
+	pass
+
+def VitalityBonus():
+	pass
+
+def EnergyBonus():
+	pass

@@ -61,7 +61,7 @@ def account():
 		form.last_name.data = current_user.last_name
 		form.email.data = current_user.email
 	return render_template('account.html', title='Account', form=form)
-	#		hashed_pw = bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
+
 @app.route('/team', methods=['GET', 'POST'])
 @login_required
 def team():
@@ -84,23 +84,22 @@ def team():
 @login_required
 def userteam():
 	term = Team.query.filter_by(user_id=current_user.id).all()
-	
-
 	return render_template ('userteam.html', title="Your Team", teams=term)
 
-# @app.route('/updateteam', methods=["GET", "POST"])
-# @login_required
-# def updateteam():
-# 	form = UpdateTeamForm()
-# 		if form.submit.data:
-# 			teamData = Team(
-# 							character1=form.character1.data,
-# 							character2=form.character2.data,
-# 							character3=form.character3.data,
-# 							character4=form.character4.data
-# 				)
-# 			db.session.commit()
-# 			return redirect(url_for('team'))
-# 		else:
-# 			print(form.errors)
-# 		return render_template ('userteam.html', title='UserTeam')
+@app.route('/updateteam', methods=["GET", "POST"])
+@login_required
+def updateteam():
+	form = UpdateTeamForm()
+	if form.submit.data:
+		teamData = Team(
+						character1=form.character1.data,
+						character2=form.character2.data,
+						character3=form.character3.data,
+						character4=form.character4.data,
+						author=current_user
+			)
+		db.session.commit()
+		return redirect(url_for('userteam'))
+	else:
+		print(form.errors)
+	return render_template ('updateteam.html', title='Update Team', form=form)
