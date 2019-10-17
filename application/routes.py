@@ -91,13 +91,11 @@ def userteam():
 def updateteam():
 	form = UpdateTeamForm()
 	if form.submit.data:
-		teamData = Team(
-						character1=form.character1.data,
-						character2=form.character2.data,
-						character3=form.character3.data,
-						character4=form.character4.data,
-						author=current_user
-			)
+		team = Team.query.filter_by(user_id=current_user.id).first()
+		team.character1=form.character1.data
+		team.character2=form.character2.data
+		team.character3=form.character3.data
+		team.character4=form.character4.data
 		db.session.commit()
 		return redirect(url_for('userteam'))
 	else:
