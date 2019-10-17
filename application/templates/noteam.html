@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<h1>No Team Found</h1>
+	<p>Hi there!</p>
+	<p>It appears you do not have a team created, would you like to create one?</p>
+	<a type="button" class="btn btn-secondary btn-sm m-1" href="{{ url_for('team') }}">Create Team</a>
+	<a type="button" class="btn btn-secondary btn-sm m-1" href="{{ url_for('home') }}">No Thank You</a>
+{% endblock body_content %}
+

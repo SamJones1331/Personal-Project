@@ -83,6 +83,8 @@ def team():
 @app.route('/userteam')
 @login_required
 def userteam():
+	if Team.query.filter_by(user_id=current_user.id).all() == []:
+		return redirect(url_for('noteam'))
 	term = Team.query.filter_by(user_id=current_user.id).all()
 	return render_template ('userteam.html', title="Your Team", teams=term)
 
@@ -101,3 +103,18 @@ def updateteam():
 	else:
 		print(form.errors)
 	return render_template ('updateteam.html', title='Update Team', form=form)
+
+@app.route('/deleteteam')
+@login_required
+def deleteteam():
+	team2delete = Team.query.filter_by(user_id=current_user.id).first()
+	db.session.delete(team2delete)
+	db.session.commit()
+	return redirect(url_for('home'))
+
+@app.route('/noteam')
+@login_required
+def noteam():
+	if current_user.id == Team.query.filter_by(user_id=current_user.id).all():
+		return redirect(url_for('userteam'))
+	return render_template ('noteam.html', title="No Team")
