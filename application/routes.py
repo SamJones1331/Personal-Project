@@ -33,10 +33,12 @@ def login():
 			else:
 				return redirect(url_for('home'))
 	return render_template('login.html', title='Login', form=form)
+
 @app.route('/logout')
 def logout ():
 	logout_user()
 	return redirect(url_for('login'))
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
 	if current_user.is_authenticated:
@@ -53,6 +55,7 @@ def register():
 		db.session.commit()
 		return redirect(url_for('account'))
 	return render_template('register.html', title='Register', form=form)
+
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
@@ -72,6 +75,9 @@ def account():
 @app.route('/team', methods=['GET', 'POST'])
 @login_required
 def team():
+	checkTeam = Team.query.filter_by(user_id=current_user.id).all()
+	if checkTeam:
+		return redirect(url_for('userteam'))
 	form = TeamForm()
 	if form.submit.data:
 		teamData = Team(
@@ -116,8 +122,7 @@ def updateteam():
 @app.route('/deleteteam')
 @login_required
 def deleteteam():
-	team2delete = Team.query.filter_by(user_id=current_user.id).first()
-	db.session.delete(team2delete)
+	Team.query.filter_by(user_id=current_user.id).delete()
 	db.session.commit()
 	return redirect(url_for('home'))
 
@@ -127,3 +132,13 @@ def noteam():
 	if current_user.id == Team.query.filter_by(user_id=current_user.id).all():
 		return redirect(url_for('userteam'))
 	return render_template ('noteam.html', title="No Team")
+
+@app.route('/deleteaccount')
+@login_required
+def deleteaccount():
+	checkTeam = Team.query.filter_by(user_id=current_user.id).all()
+	if checkTeam:
+		Team.query.filter_by(user_id=current_user.id).delete()
+	Users.query.filter_by(id=current_user.id).delete()
+	db.session.commit()
+	return redirect(url_for('home'))

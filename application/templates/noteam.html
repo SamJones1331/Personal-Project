@@ -3,7 +3,11 @@
 	<h1>No Team Found</h1>
 	<p>Hi there!</p>
 	<p>It appears you do not have a team created, would you like to create one?</p>
-	<a type="button" class="btn btn-secondary btn-sm m-1" href="{{ url_for('team') }}">Create Team</a>
-	<a type="button" class="btn btn-secondary btn-sm m-1" href="{{ url_for('home') }}">No Thank You</a>
+	<form action="{{ url_for('team') }}">
+		<button class="btn" type="submit">Create Team</button>
+	</form>
+	<form action="{{ url_for('home') }}">
+		<button class="btn" type="submit">No Thank You</button>
+	</form>
 {% endblock body_content %}
 
