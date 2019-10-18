@@ -2,16 +2,16 @@
 {% block body_content %}
 	{% for team in teams %}
 		<br>
-		<h3>
+		<h1>
 		Team {{ loop.index }}
-		</h3>
-		<p>
-		<br>
-		<b>{{ team.character1 }}, {{ team.character2 }}, {{ team.character3 }}, {{ team.character4 }}</b>
-		<p>Strength Durability Resistance Mastery Vitality Energy</p>
+		</h1>
+		<h2>{{ team.character1 }}, {{ team.character2 }}, {{ team.character3 }}, {{ team.character4 }}</h2>
+		<h3>{{ text }}</h3>
 		<div>
-			<a type="button" class="btn btn-secondary btn-sm m-1" href="{{ url_for('updateteam') }}">Update Team</a>
-			<a type="button" class="btn btn-secondary btn-sm m-1" href="{{ url_for('deleteteam') }}">Delete Team</a>
+			<form action="{{ url_for('updateteam') }}">
+				<button class="btn" type="submit">Update Team</button>
+			<form action class="{{ url_for('deleteteam') }}">
+				<button class="btn" type="submit">Delete Team</button>
 		</div>
 		</p>
 

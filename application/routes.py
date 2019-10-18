@@ -3,6 +3,12 @@ from application import app, db, bcrypt
 from application.models import Users, Gamecharacters, Team
 from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, TeamForm, UpdateTeamForm
 from flask_login import login_user, current_user, logout_user, login_required, LoginManager
+from strength_calculations import StrengthBonus
+from durability_calculations import DurabilityBonus
+from resistance_calculations import ResistanceBonus
+from mastery_calculations import MasteryBonus
+from vitality_calculations import VitalityBonus
+from energy_calculations import EnergyBonus
 
 @app.route('/')
 @app.route('/home')
@@ -81,13 +87,15 @@ def team():
 	else:
 		print(form.errors)
 	return render_template ('team.html', title='Team', form=form)
+
 @app.route('/userteam')
 @login_required
 def userteam():
 	if Team.query.filter_by(user_id=current_user.id).all() == []:
 		return redirect(url_for('noteam'))
 	term = Team.query.filter_by(user_id=current_user.id).all()
-	return render_template ('userteam.html', title="Your Team", teams=term)
+	text = 'Strength Bonus', StrengthBonus(), 'Durability Bonus', DurabilityBonus(), 'Resistance Bonus', ResistanceBonus(), 'Mastery Bonus', MasteryBonus(), 'Vitality Bonus', VitalityBonus(), 'Energy Bonus', EnergyBonus()
+	return render_template ('userteam.html', title="Your Team", teams=term, text=text)
 
 @app.route('/updateteam', methods=["GET", "POST"])
 @login_required
