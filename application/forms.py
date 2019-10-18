@@ -80,41 +80,115 @@ class TeamForm(FlaskForm):
 #	lists = []
 	names = []
 	for i in range(int(len(lists))):
-		temp = [lists[i], lists[i]]
+		temp = [lists[i].character_name, lists[i].character_name]
 		names.append(temp)
 
 	character1 = SelectField("Character 1",
-		choices= names
+		choices= names,
+		coerce=str
 		)
 	character2 = SelectField("Character 2",
-		choices= names
+		choices= names,
+		coerce=str
 		)
 	character3 = SelectField("Character 3",
-		choices= names
+		choices= names,
+		coerce=str
 		)
 	character4 = SelectField("Character 4",
-		choices= names
+		choices= names,
+		coerce=str
 		)
-	submit = SubmitField('Create Team')
+	submit = SubmitField('Create Team') 
+
+	def validate_character1(self, character1):
+		if character1.data == self.character2.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 2")
+		elif character1.data == self.character3.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 3")
+		elif character1.data == self.character4.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 4")
+
+	def validate_character2(self, character2):
+		if character2.data == self.character1.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 1")
+		elif character2.data == self.character3.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 3")
+		elif character2.data == self.character4.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 4")
+	
+	def validate_character3(self, character3):
+		if character3.data == self.character1.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 1")
+		elif character3.data == self.character2.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 2")
+		elif character3.data == self.character4.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 4")
+
+	def validate_character4(self, character4):
+		if character4.data == self.character1.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 1")
+		elif character4.data == self.character3.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 3")
+		elif character4.data == self.character2.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 2")
+
+
 
 class UpdateTeamForm(FlaskForm):
 	lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
 #	lists = []
 	names = []
 	for i in range(int(len(lists))):
-		temp = [lists[i], lists[i]]
+		temp = [lists[i].character_name, lists[i].character_name]
 		names.append(temp)
 
 	character1 = SelectField("Character 1",
-		choices= names
+		choices= names,
+		coerce=str
 		)
 	character2 = SelectField("Character 2",
-		choices= names
+		choices= names,
+		coerce=str
 		)
 	character3 = SelectField("Character 3",
-		choices= names
+		choices= names,
+		coerce=str
 		)
 	character4 = SelectField("Character 4",
-		choices= names
+		choices= names,
+		coerce=str
 		)
-	submit = SubmitField('Update Team')
+	submit = SubmitField('Create Team') 
+
+	def validate_character1(self, character1):
+		if character1.data == self.character2.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 2")
+		elif character1.data == self.character3.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 3")
+		elif character1.data == self.character4.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 4")
+
+	def validate_character2(self, character2):
+		if character2.data == self.character1.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 1")
+		elif character2.data == self.character3.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 3")
+		elif character2.data == self.character4.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 4")
+	
+	def validate_character3(self, character3):
+		if character3.data == self.character1.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 1")
+		elif character3.data == self.character2.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 2")
+		elif character3.data == self.character4.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 4")
+
+	def validate_character4(self, character4):
+		if character4.data == self.character1.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 1")
+		elif character4.data == self.character3.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 3")
+		elif character4.data == self.character2.data:
+			raise ValidationError("Can't have multiple versions of the same character: Character 2")

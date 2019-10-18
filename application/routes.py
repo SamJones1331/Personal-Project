@@ -79,7 +79,7 @@ def team():
 	if checkTeam:
 		return redirect(url_for('userteam'))
 	form = TeamForm()
-	if form.submit.data:
+	if form.validate_on_submit():
 		teamData = Team(
 						character1=form.character1.data,
 						character2=form.character2.data,
@@ -90,8 +90,7 @@ def team():
 		db.session.add(teamData)
 		db.session.commit()
 		return redirect(url_for('userteam'))
-	else:
-		print(form.errors)
+
 	return render_template ('team.html', title='Team', form=form)
 
 @app.route('/userteam')
@@ -107,7 +106,7 @@ def userteam():
 @login_required
 def updateteam():
 	form = UpdateTeamForm()
-	if form.submit.data:
+	if form.validate_on_submit():
 		team = Team.query.filter_by(user_id=current_user.id).first()
 		team.character1=form.character1.data
 		team.character2=form.character2.data

@@ -6,6 +6,7 @@ from datetime import datetime
 def load_user(id):
 	return Users.query.get(int(id))
 
+
 class Users(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	email = db.Column(db.String(150), nullable=False, unique=True)
