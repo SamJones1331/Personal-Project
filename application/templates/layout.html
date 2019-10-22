@@ -28,7 +28,7 @@
 			<a href="{{ url_for('register') }}">Register</a>
 		{% endif %}	
 	</div>
-	<hr>
+	<div>
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
 	<ul>
@@ -38,6 +38,7 @@
 	</ul>
 	{% endif %}
 	{% endwith %}
+	</div>
 	{% block  body_content %}{% endblock body_content %}
 </body>
 </html> 
