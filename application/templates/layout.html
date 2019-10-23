@@ -28,6 +28,17 @@
 			<a href="{{ url_for('register') }}">Register</a>
 		{% endif %}	
 	</div>
+	<div>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% endwith %}
+	</div>
 	{% block  body_content %}{% endblock body_content %}
 </body>
 </html> 

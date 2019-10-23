@@ -10,6 +10,7 @@ from mastery_calculations import MasteryBonus
 from vitality_calculations import VitalityBonus
 from energy_calculations import EnergyBonus
 
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -25,6 +26,9 @@ def login():
 	form = LoginForm()
 	if form.validate_on_submit():
 		user = Users.query.filter_by(email=form.email.data).first()
+		if user is None or not user.check_password(form.password.data):
+			flash('Invalid email or password')
+			return redirect(url_for('login'))
 		if user and bcrypt.check_password_hash(user.password, form.password.data):
 			login_user(user, remember=form.remember.data)
 			next_page = request.args.get('next')
