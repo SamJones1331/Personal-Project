@@ -112,7 +112,7 @@ def userteam():
 		lists = lists.replace("'", "")
 		lists = lists.replace("'", "")
 		return lists
-	#text = replaceFunction(text)
+	text = replaceFunction(text)
 	return render_template ('userteam.html', title="Your Team", teams=term, text=text)
 
 @app.route('/updateteam', methods=["GET", "POST"])
