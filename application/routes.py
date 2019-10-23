@@ -3,12 +3,12 @@ from application import app, db, bcrypt
 from application.models import Users, Gamecharacters, Team
 from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, TeamForm, UpdateTeamForm
 from flask_login import login_user, current_user, logout_user, login_required, LoginManager
-from strength_calculations import StrengthBonus
-from durability_calculations import DurabilityBonus
-from resistance_calculations import ResistanceBonus
-from mastery_calculations import MasteryBonus
-from vitality_calculations import VitalityBonus
-from energy_calculations import EnergyBonus
+from bonuses.strength_calculations import StrengthBonus
+from bonuses.durability_calculations import DurabilityBonus
+from bonuses.resistance_calculations import ResistanceBonus
+from bonuses.mastery_calculations import MasteryBonus
+from bonuses.vitality_calculations import VitalityBonus
+from bonuses.energy_calculations import EnergyBonus
 
 
 @app.route('/')
