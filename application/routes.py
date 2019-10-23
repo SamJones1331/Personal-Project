@@ -26,7 +26,7 @@ def login():
 	form = LoginForm()
 	if form.validate_on_submit():
 		user = Users.query.filter_by(email=form.email.data).first()
-		if user is None or not user.check_password(form.password.data):
+		if user is None:
 			flash('Invalid email or password')
 			return redirect(url_for('login'))
 		if user and bcrypt.check_password_hash(user.password, form.password.data):
@@ -104,6 +104,15 @@ def userteam():
 		return redirect(url_for('noteam'))
 	term = Team.query.filter_by(user_id=current_user.id).all()
 	text = 'Strength Bonus', StrengthBonus(), 'Durability Bonus', DurabilityBonus(), 'Resistance Bonus', ResistanceBonus(), 'Mastery Bonus', MasteryBonus(), 'Vitality Bonus', VitalityBonus(), 'Energy Bonus', EnergyBonus()
+	text = str(text)
+	def replaceFunction(query):
+		lists = query.replace("(", "")
+		lists = lists.replace(")", "")
+		lists = lists.replace(",", "")
+		lists = lists.replace("'", "")
+		lists = lists.replace("'", "")
+		return lists
+	#text = replaceFunction(text)
 	return render_template ('userteam.html', title="Your Team", teams=term, text=text)
 
 @app.route('/updateteam', methods=["GET", "POST"])
