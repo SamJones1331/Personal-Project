@@ -6,16 +6,18 @@ def DurabilityBonus():
 	finalDurabilityBonus = DefendersBonus() + FamilyValuesBonus() + GenerationsBonus() + HeavyMetalBonus() + NewAvengersBonus()
 	return finalDurabilityBonus
 
+def replaceFunction(query):
+	lists = query.replace("[", "")
+	lists = lists.replace("]", "")
+	lists = lists.replace("(", "")
+	lists = lists.replace(")", "")
+	lists = lists.replace(",", "")
+	lists = lists.replace("'", "")
+	lists = lists.replace("'", "")
+	return lists
+
+
 def DefendersBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -72,15 +74,6 @@ def DefendersBonus():
 	return defendersBonus
 
 def FamilyValuesBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -137,15 +130,6 @@ def FamilyValuesBonus():
 	return familyBonus
 
 def GenerationsBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -202,15 +186,6 @@ def GenerationsBonus():
 	return generationsBonus
 
 def HeavyMetalBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -267,15 +242,6 @@ def HeavyMetalBonus():
 	return metalBonus
 
 def NewAvengersBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)

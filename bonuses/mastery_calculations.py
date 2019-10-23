@@ -6,16 +6,17 @@ def MasteryBonus():
 	finalMasteryBonus = AgileFightersBonus() + FemmeFatalesBonus() + ForcesOfNatureBonus() + MidnightSonsBonus() + OriginalAvengersBonus() + SharpshootersBonus()
 	return finalMasteryBonus
 
+def replaceFunction(query):
+	lists = query.replace("[", "")
+	lists = lists.replace("]", "")
+	lists = lists.replace("(", "")
+	lists = lists.replace(")", "")
+	lists = lists.replace(",", "")
+	lists = lists.replace("'", "")
+	lists = lists.replace("'", "")
+	return lists
+
 def AgileFightersBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -72,15 +73,6 @@ def AgileFightersBonus():
 	return agileBonus
 
 def FemmeFatalesBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -137,15 +129,6 @@ def FemmeFatalesBonus():
 	return femmeBonus
 
 def ForcesOfNatureBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -202,15 +185,6 @@ def ForcesOfNatureBonus():
 	return forcesBonus
 
 def MidnightSonsBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -267,15 +241,6 @@ def MidnightSonsBonus():
 	return midnightBonus
 
 def OriginalAvengersBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -332,15 +297,6 @@ def OriginalAvengersBonus():
 	return originalBonus
 
 def SharpshootersBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)

@@ -6,16 +6,17 @@ def ResistanceBonus():
 	finalResistanceBonus = BackInBlackBonus() + BigBrainsBonus() + TheCrewBonus() + GuardiansBonus() + WebWarriorsBonus()
 	return finalResistanceBonus
 
+def replaceFunction(query):
+	lists = query.replace("[", "")
+	lists = lists.replace("]", "")
+	lists = lists.replace("(", "")
+	lists = lists.replace(")", "")
+	lists = lists.replace(",", "")
+	lists = lists.replace("'", "")
+	lists = lists.replace("'", "")
+	return lists
+
 def BackInBlackBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -72,15 +73,6 @@ def BackInBlackBonus():
 	return blackBonus
 
 def BigBrainsBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -137,15 +129,6 @@ def BigBrainsBonus():
 	return brainBonus
 
 def TheCrewBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -202,15 +185,6 @@ def TheCrewBonus():
 	return crewBonus
 
 def GuardiansBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
@@ -267,15 +241,6 @@ def GuardiansBonus():
 	return guardiansBonus
 
 def WebWarriorsBonus():
-	def replaceFunction(query):
-		lists = query.replace("[", "")
-		lists = lists.replace("]", "")
-		lists = lists.replace("(", "")
-		lists = lists.replace(")", "")
-		lists = lists.replace(",", "")
-		lists = lists.replace("'", "")
-		lists = lists.replace("'", "")
-		return lists
 	def bonusQuery1(query):
 		query = db.session.query(Team.character1).filter_by(user_id=current_user.id).all()
 		character1query = str(query)
