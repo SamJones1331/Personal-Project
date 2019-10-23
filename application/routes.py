@@ -1,4 +1,4 @@
-from flask import render_template , redirect, url_for, request
+from flask import render_template , redirect, url_for, request, flash
 from application import app, db, bcrypt
 from application.models import Users, Gamecharacters, Team
 from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, TeamForm, UpdateTeamForm
