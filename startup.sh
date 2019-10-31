@@ -1,4 +1,10 @@
-#!bin/bash
+cd ~
+cd /home/fezgaming/Personal-Project/application
+. ./venv/bin/activate
+sudo apt-get install python3-pip
+sudo apt-get install python3-venv
+pip3 install pyopenssl
+
 export FLASK_APP=run.py
 export FLASK_ENV=production
 export FLASK_RUN_HOST=0.0.0.0
