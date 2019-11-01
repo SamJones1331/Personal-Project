@@ -14,7 +14,9 @@ pipeline{
                 }
             }
         stage('---run---'){
-            sh "sudo docker run -d --name flask-app -p 5000:5000 flask-app"
+            steps{
+                sh "sudo docker run -d --name flask-app -p 5000:5000 flask-app"
             }
+        }
     }
 }
