@@ -77,8 +77,11 @@ class UpdateAccountForm(FlaskForm):
 				raise ValidationError('Email already in use - Please choose another')
 
 class TeamForm(FlaskForm):
-	lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
-#	lists = []
+	lists = []
+	try:
+		lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
+	except:
+  		print("gamecharacters don't exist, continuing with empty list")
 	names = []
 	for i in range(int(len(lists))):
 		temp = [lists[i].character_name, lists[i].character_name]
@@ -137,8 +140,11 @@ class TeamForm(FlaskForm):
 
 
 class UpdateTeamForm(FlaskForm):
-	lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
-#	lists = []
+	lists = []
+	try:
+		lists = Gamecharacters.query.filter_by(character_name=Gamecharacters.character_name).all()
+	except:
+  		print("gamecharacters don't exist, continuing with empty list")
 	names = []
 	for i in range(int(len(lists))):
 		temp = [lists[i].character_name, lists[i].character_name]

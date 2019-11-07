@@ -10,7 +10,7 @@ def load_user(id):
 class Users(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	email = db.Column(db.String(150), nullable=False, unique=True)
-	password = db.Column(db.String(50), nullable=False)
+	password = db.Column(db.String(128), nullable=False)
 	first_name = db.Column(db.String(30), nullable=False)
 	last_name = db.Column(db.String(30), nullable=False)
 	team = db.relationship('Team', backref='author', lazy=True)
