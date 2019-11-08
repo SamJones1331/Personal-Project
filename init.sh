@@ -11,5 +11,8 @@ echo "DB ENTRY: ${DB_ENTRY}"
 if [ "${DB_ENTRY}" = true ]; then
 	python3 database_entry.py
 fi
+if [ "${DB_ENTRY}" = True ]; then
+        python3 database_entry.py
+fi
 # run the application
 python3 run.py
